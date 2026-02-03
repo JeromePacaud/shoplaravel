@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PageController;
 
@@ -17,7 +18,15 @@ Route::get('/hello', function () {
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 
-Route::prefix('products')->group(function () {
-    Route::get('/', [ProductController::class, 'index'])->name('products.index');
-    Route::get('/{id}', [ProductController::class, 'show'])->name('products.show');
+Route::prefix('products')->name('products.')->group(function () {
+    Route::get('/dashboard', [ProductController::class, 'index'])->name('index');
+    Route::get('/{id}', [ProductController::class, 'show'])->name('show')->where('id', '[0-9]+');
+    Route::fallback(function () {
+        return 'Page non trouvée ! <a href="/">Retour à l\'accueil</a>';
+    });
+});
+
+Route::prefix('/admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('/users', [AdminController::class, 'usersList'])->name('users');
 });

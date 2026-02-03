@@ -6,16 +6,14 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-//    public function home() {
-//        return
-//            '
-//                Bienvenue chez ShopLaravel !
-//                Bienvenue dans ta boutique en ligne simple et chaleureuse, où chaque visite est une découverte. Que tu
-//                cherches un petit coup de cœur, un cadeau sympa ou un indispensable du quotidien, tu es au bon endroit.
-//            ';
-//    }
     public function home() {
-        return redirect()->route('products.show', ['id' => 1]);
+        $context = [
+            'title' => 'Home',
+            'name' => 'ShopLaravel',
+            'nbProducts' => 50,
+            'state' => 'open',
+        ];
+        return view('index', $context);
     }
 
     public function about() {
