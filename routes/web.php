@@ -19,7 +19,7 @@ Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 
 Route::prefix('products')->name('products.')->group(function () {
-    Route::get('/dashboard', [ProductController::class, 'index'])->name('index');
+    Route::get('/', [ProductController::class, 'index'])->name('index');
     Route::get('/{id}', [ProductController::class, 'show'])->name('show')->where('id', '[0-9]+');
     Route::fallback(function () {
         return 'Page non trouvée ! <a href="/">Retour à l\'accueil</a>';

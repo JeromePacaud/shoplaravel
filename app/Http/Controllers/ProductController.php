@@ -35,10 +35,10 @@ class ProductController extends Controller
             ]
         ];
         $context = [
-            'title' => 'Products',
+            'title' => 'Products List',
             'products' => $products,
         ];
-        return 'Liste des produits';
+        return view('products.index', $context);
     }
     public function show($id) {
         return 'Affichage du produit : ' . $id;
