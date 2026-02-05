@@ -25,9 +25,9 @@
 
         <!-- Product Details -->
         <div class="col-md-6">
-            <h1 class="h2 mb-3">{{ $product['name'] }}</h1>
+            <h1 class="h2 mb-3">{{ $product->name }}</h1>
             <div class="mb-3">
-                <span class="h4 me-2">{{ $product['price'] }} €</span>
+                <span class="h4 me-2">{{ $product->price }} €</span>
             </div>
 
             <div class="mb-3">
@@ -39,31 +39,31 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                     </div>
-                    <span class="text-muted">(128 reviews)</span>
+                    <span class="text-muted">(128 commentaires)</span>
                 </div>
             </div>
 
             <p class="mb-4">
-                {{ $product['description'] }}
+                {{ $product->descriptions }}
             </p>
 
             <!-- Color Selection -->
             <div class="mb-4">
-                <h6 class="mb-2">Color</h6>
+                <h6 class="mb-2">Couleur</h6>
                 <div class="btn-group" role="group">
                     <input type="radio" class="btn-check" name="color" id="silver" checked>
-                    <label class="btn btn-outline-secondary" for="silver">Silver</label>
+                    <label class="btn btn-outline-secondary" for="silver">Argent</label>
                     <input type="radio" class="btn-check" name="color" id="gold">
-                    <label class="btn btn-outline-secondary" for="gold">Gold</label>
+                    <label class="btn btn-outline-secondary" for="gold">Or</label>
                     <input type="radio" class="btn-check" name="color" id="black">
-                    <label class="btn btn-outline-secondary" for="black">Black</label>
+                    <label class="btn btn-outline-secondary" for="black">Noir</label>
                 </div>
             </div>
 
             <!-- Quantity -->
             <div class="mb-4">
                 <div class="d-flex align-items-center">
-                    <label class="me-2">Quantity:</label>
+                    <label class="me-2">Quantité:</label>
                     <select class="form-select w-auto">
                         <option>1</option>
                         <option>2</option>
@@ -76,9 +76,9 @@
 
             <!-- Actions -->
             <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="button">Add to Cart</button>
+                <button class="btn btn-primary" type="button">Ajouter au panier</button>
                 <button class="btn btn-outline-secondary" type="button">
-                    <i class="bi bi-heart-fill text-danger me-1"></i>Add to Wishlist
+                    <i class="bi bi-heart-fill text-danger me-1"></i>Ajouter à la liste de souhait
                 </button>
             </div>
 
@@ -86,15 +86,15 @@
             <div class="mt-4">
                 <div class="d-flex align-items-center mb-2">
                     <i class="fas fa-truck text-primary me-2"></i>
-                    <span>Free shipping on orders over $50</span>
+                    <span>Frais de port offert au dela de 50€ d'achat</span>
                 </div>
                 <div class="d-flex align-items-center mb-2">
                     <i class="fas fa-undo text-primary me-2"></i>
-                    <span>30-day return policy</span>
+                    <span>Police de retour de 30 jours</span>
                 </div>
                 <div class="d-flex align-items-center">
                     <i class="fas fa-shield-alt text-primary me-2"></i>
-                    <span>2-year warranty</span>
+                    <span>2 ans de garentie</span>
                 </div>
             </div>
         </div>
