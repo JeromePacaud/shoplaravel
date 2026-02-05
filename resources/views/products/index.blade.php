@@ -16,5 +16,6 @@
         @empty
             <p>Aucun produit trouvé.</p>
         @endforelse
+
     </div>
 @endsection

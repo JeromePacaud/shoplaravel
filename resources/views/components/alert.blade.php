@@ -1,13 +1,13 @@
-@php
-    $colors = [
-        'info' => 'bg-info',
-        'success' => 'bg-success',
-        'warning' => 'bg-warning',
-        'error' => 'bg-error',
-    ];
-@endphp
+@if($message)
+    <div class="alert alert-{{ $type }} alert-dismissible fade show" role="alert">
+        {{ $message }}
+        {{ $slot }}
 
-<div class="alert alert-{{ $colors[$type] ?? $colors['info'] }}">
-    {{ $message }}
-    {{ $slot }}
-</div>
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close">
+        </button>
+    </div>
+@endif
+

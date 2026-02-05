@@ -13,7 +13,7 @@
 
     <header>
 
-        <nav class="navbar navbar-expand-lg bg-primary border-bottom border-body" data-bs-theme="light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary border-bottom border-body" data-bs-theme="light">
             <div class="container-fluid">
                 <a class="navbar-brand text-light" href="{{ route('home') }}">ShopLaravel</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,18 +22,18 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a @class(['nav-link', 'text-light', 'active' => $routeName === 'home']) href="{{ route('home') }}">Accueil</a>
+                            <a @class(['nav-link', 'active' => $routeName === 'home']) href="{{ route('home') }}">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a @class(['nav-link', 'text-light', 'active' => $routeName === 'about']) href="{{ route('about') }}">À propos</a>
+                            <a @class(['nav-link', 'active' => $routeName === 'about']) href="{{ route('about') }}">À propos</a>
                         </li>
                         <li class="nav-item">
-                            <a @class(['nav-link', 'text-light', 'active' => str_starts_with($routeName, 'products.')]) href="{{ route('products.index') }}">Catalogue</a>
+                            <a @class(['nav-link', 'active' => str_starts_with($routeName, 'products.')]) href="{{ route('products.index') }}">Catalogue</a>
                         </li>
                     </ul>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                        <button class="btn btn-outline-light text-light" type="submit">Search</button>
+                        <button class="btn btn-outline-light" type="submit">Search</button>
                     </form>
                 </div>
             </div>
@@ -42,6 +42,15 @@
     </header>
 
     <main class="bg-light" @if($routeName === 'home' || $routeName === 'about' || $routeName === 'products.show') style="height: calc(100vh - (56px + 169px));" @endif>
+
+        <x-alert type="success" message="Produit ajouté au panier"/>
+
+        <x-alert type="error">
+            <strong>Erreur !</strong> Le produit n'est plus disponible.
+        </x-alert>
+
+        <x-session-alert />
+
         <div class="container">
             @yield('content')
         </div>

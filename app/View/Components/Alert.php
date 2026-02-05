@@ -10,11 +10,28 @@ class Alert extends Component
 {
     public string $type;
     public string $message;
+
+    protected array $allowedTypes = [
+        'success',
+        'info',
+        'warning',
+        'danger',
+        'error',
+    ];
+
     /**
      * Create a new component instance.
      */
-    public function __construct(string $type = 'info', string $message = '') {
-        $this->type = $type;
+    public function __construct(string $type = 'info', string $message = '')
+    {
+        if ($type === 'error') {
+            $type = 'danger';
+        }
+
+        $this->type = in_array($type, $this->allowedTypes, true)
+            ? $type
+            : 'info';
+
         $this->message = $message;
     }
 
