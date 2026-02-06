@@ -40,18 +40,26 @@
 
     </header>
 
-    <main class="bg-light" @if($routeName === 'home' || $routeName === 'about' || $routeName === 'products.show') style="height: calc(100vh - (56px + 169px));" @endif>
+    <main class="bg-light"
+          @if($routeName === 'home'
+            || $routeName === 'about'
+            || $routeName === 'products.show')
+            style="height: calc(100vh - (56px + 169px));"
+          @endif>
 
 
-        <div class="container">
-            <x-alert type="success" message="Produit ajouté au panier"/>
-
-            <x-alert type="error">
-                <strong>Erreur !</strong> Le produit n'est plus disponible.
-            </x-alert>
-
-            <x-session-alert />
-
+        <div class="container d-flex flex-column">
+            <div class="row justify-content-center">
+                    <div class="col-md-8">
+                    <!-- <x-alert type="success" message="Produit ajouté au panier"/> -->
+                    <!--
+                    <x-alert type="error">
+                        <strong>Erreur !</strong> Le produit n'est plus disponible.
+                    </x-alert>
+                    -->
+                    <x-session-alert />
+                </div>
+            </div>
             @yield('content')
         </div>
     </main>

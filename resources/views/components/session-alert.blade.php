@@ -8,7 +8,7 @@
     </div>
 @endif
 
-@if(count($messages))
+@if($messages)
     @foreach($messages as $alert)
         <div class="alert alert-{{ $alert['type'] }} alert-dismissible fade show" role="alert">
             {{ $alert['message'] }}

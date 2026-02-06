@@ -14,7 +14,7 @@ class Product extends Model
     public function category(): BelongsTo {
         return $this->belongsTo(Category::class);
     }
-    
+
     public function scopeActive(Builder $query): Builder{
         return $query->where('active', 1);
     }
@@ -80,6 +80,7 @@ class Product extends Model
         'stock',
         'category_id',
         'image',
+        'active'
     ];
 
     protected $casts = [
