@@ -17,11 +17,35 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
-        $name = ucfirst($this->faker->unique()->word(3, true));
+        $categories = [
+            [
+                'name' => 'Électronique',
+                'description' => 'Smartphones, ordinateurs, tablettes et accessoires tech'
+            ],
+            [
+                'name' => 'Vêtements',
+                'description' => 'Mode homme, femme et enfant - Toutes les tendances'
+            ],
+            [
+                'name' => 'Maison & Jardin',
+                'description' => 'Meubles, décoration, jardinage et bricolage'
+            ],
+            [
+                'name' => 'Sports & Loisirs',
+                'description' => 'Équipement sportif, fitness et activités de plein air'
+            ],
+            [
+                'name' => 'Beauté & Santé',
+                'description' => 'Cosmétiques, soins du corps et bien-être'
+            ],
+        ];
+
+        $category = $this->faker->unique()->randomElement($categories);
+
         return [
-            'name' => $name,
-            'description' => $this->faker->text(),
-            'slug' => Str::slug($name),
+            'name' => $category['name'],
+            'slug' => Str::slug($category['name']),
+            'description' => $category['description'],
         ];
     }
 }

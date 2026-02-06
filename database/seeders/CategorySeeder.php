@@ -15,7 +15,7 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
 
-        DB::table('categories')->insert([
+        /*DB::table('categories')->insert([
             [
                 'name' => 'Électronique',
                 'slug' => 'electronique',
@@ -51,7 +51,7 @@ class CategorySeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
-        ]);
+        ]);*/
 
     }
 }

@@ -19,7 +19,7 @@
         <div class="card-footer d-flex justify-content-between bg-light">
             <button class="btn btn-primary btn-sm">Ajouter au panier</button>
             <button class="btn btn-primary btn-sm">
-                <a href="{{ route('products.show', ['id' => $product->id]) }}" class="text-light nav-link">Details</a>
+                <a href="{{ route('products.show', ['product' => $product]) }}" class="text-light nav-link">Details</a>
             </button>
             <button class="btn btn-outline-secondary btn-sm">
                 <i class="bi bi-heart-fill text-danger"></i>

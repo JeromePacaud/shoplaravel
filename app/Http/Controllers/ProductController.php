@@ -18,8 +18,7 @@ class ProductController extends Controller
         ];
         return view('products.index', $context);
     }
-    public function show(Request $request, $id): View {
-        $product =  Product::findOrFail($id);
+    public function show(Request $request, Product $product): View {
         $routeName = $request->route()->getName();
         $context = [
             'product' => $product,
