@@ -8,6 +8,7 @@ use Illuminate\View\View;
 class PageController extends Controller
 {
     public function home(Request $request): View {
+
         $routeName  = $request->route()->getName();
 
         $context = [

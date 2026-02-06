@@ -12,7 +12,6 @@
 <body>
 
     <header>
-
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary border-bottom border-body" data-bs-theme="light">
             <div class="container-fluid">
                 <a class="navbar-brand text-light" href="{{ route('home') }}">ShopLaravel</a>
@@ -43,15 +42,16 @@
 
     <main class="bg-light" @if($routeName === 'home' || $routeName === 'about' || $routeName === 'products.show') style="height: calc(100vh - (56px + 169px));" @endif>
 
-        <x-alert type="success" message="Produit ajouté au panier"/>
-
-        <x-alert type="error">
-            <strong>Erreur !</strong> Le produit n'est plus disponible.
-        </x-alert>
-
-        <x-session-alert />
 
         <div class="container">
+            <x-alert type="success" message="Produit ajouté au panier"/>
+
+            <x-alert type="error">
+                <strong>Erreur !</strong> Le produit n'est plus disponible.
+            </x-alert>
+
+            <x-session-alert />
+
             @yield('content')
         </div>
     </main>

@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -9,6 +11,7 @@ class ProductSeeder extends Seeder
 {
     public function run(): void
     {
+        /*
         DB::table('products')->insert([
             // ÉLECTRONIQUE (category_id: 1)
             [
@@ -224,5 +227,13 @@ class ProductSeeder extends Seeder
                 'updated_at' => now(),
             ],
         ]);
+        */
+
+        $categories = Category::factory()->count(5)->create();
+
+        Product::factory()
+            ->count(30)
+            ->recycle($categories)
+            ->create();;
     }
 }

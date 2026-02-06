@@ -1,5 +1,5 @@
 @if($message)
-    <div class="alert alert-{{ $type }} alert-dismissible fade show" role="alert">
+    <div class="alert alert-{{ $type }} alert-dismissible fade show mt-5" role="alert">
         {{ $message }}
         {{ $slot }}
 
