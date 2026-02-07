@@ -1,0 +1,239 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Category;
+use App\Models\Product;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class ProductSeeder extends Seeder
+{
+    public function run(): void
+    {
+        /*
+        DB::table('products')->insert([
+            // ÉLECTRONIQUE (category_id: 1)
+            [
+                'category_id' => 1,
+                'name' => 'iPhone 15 Pro',
+                'slug' => 'iphone-15-pro',
+                'description' => 'Smartphone Apple dernière génération avec puce A17 Pro',
+                'price' => 1229.00,
+                'stock' => 25,
+                'image' => 'products/iphone-15-pro.jpg',
+                'active' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 1,
+                'name' => 'MacBook Air M3',
+                'slug' => 'macbook-air-m3',
+                'description' => 'Ordinateur portable ultra-léger avec puce M3',
+                'price' => 1299.00,
+                'stock' => 15,
+                'image' => 'products/macbook-air-m3.jpg',
+                'active' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 1,
+                'name' => 'AirPods Pro 2',
+                'slug' => 'airpods-pro-2',
+                'description' => 'Écouteurs sans fil avec réduction de bruit active',
+                'price' => 279.00,
+                'stock' => 50,
+                'image' => 'products/airpods-pro-2.jpg',
+                'active' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 1,
+                'name' => 'Samsung Galaxy S24 Ultra',
+                'slug' => 'samsung-galaxy-s24-ultra',
+                'description' => 'Smartphone Android premium avec S Pen',
+                'price' => 1359.00,
+                'stock' => 20,
+                'image' => 'products/galaxy-s24-ultra.jpg',
+                'active' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+
+            // VÊTEMENTS (category_id: 2)
+            [
+                'category_id' => 2,
+                'name' => 'T-shirt "Code & Coffee"',
+                'slug' => 't-shirt-code-coffee',
+                'description' => 'T-shirt 100% coton pour développeurs passionnés',
+                'price' => 24.99,
+                'stock' => 100,
+                'image' => 'products/tshirt-code-coffee.jpg',
+                'active' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 2,
+                'name' => 'Sweat à capuche "Dev Mode"',
+                'slug' => 'sweat-dev-mode',
+                'description' => 'Sweat confortable pour longues sessions de code',
+                'price' => 49.99,
+                'stock' => 75,
+                'image' => 'products/sweat-dev-mode.jpg',
+                'active' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 2,
+                'name' => 'Casquette "Git Commit"',
+                'slug' => 'casquette-git-commit',
+                'description' => 'Casquette snapback pour les fans de Git',
+                'price' => 19.99,
+                'stock' => 60,
+                'image' => 'products/casquette-git.jpg',
+                'active' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 2,
+                'name' => 'Jean slim bleu',
+                'slug' => 'jean-slim-bleu',
+                'description' => 'Jean confortable coupe moderne',
+                'price' => 59.99,
+                'stock' => 45,
+                'image' => 'products/jean-slim.jpg',
+                'active' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+
+            // MAISON & DÉCO (category_id: 3)
+            [
+                'category_id' => 3,
+                'name' => 'Lampe de bureau LED',
+                'slug' => 'lampe-bureau-led',
+                'description' => 'Lampe design avec luminosité réglable',
+                'price' => 39.99,
+                'stock' => 35,
+                'image' => 'products/lampe-led.jpg',
+                'active' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 3,
+                'name' => 'Chaise de bureau ergonomique',
+                'slug' => 'chaise-bureau-ergonomique',
+                'description' => 'Chaise confortable avec support lombaire',
+                'price' => 249.00,
+                'stock' => 20,
+                'image' => 'products/chaise-ergonomique.jpg',
+                'active' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 3,
+                'name' => 'Bureau réglable en hauteur',
+                'slug' => 'bureau-reglable',
+                'description' => 'Bureau assis-debout motorisé',
+                'price' => 599.00,
+                'stock' => 10,
+                'image' => 'products/bureau-reglable.jpg',
+                'active' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+
+            // SPORTS & LOISIRS (category_id: 4)
+            [
+                'category_id' => 4,
+                'name' => 'Tapis de yoga premium',
+                'slug' => 'tapis-yoga-premium',
+                'description' => 'Tapis antidérapant 6mm d\'épaisseur',
+                'price' => 34.99,
+                'stock' => 80,
+                'image' => 'products/tapis-yoga.jpg',
+                'active' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 4,
+                'name' => 'Haltères ajustables 20kg',
+                'slug' => 'halteres-ajustables-20kg',
+                'description' => 'Paire d\'haltères réglables de 2 à 20kg',
+                'price' => 149.99,
+                'stock' => 25,
+                'image' => 'products/halteres.jpg',
+                'active' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 4,
+                'name' => 'Vélo d\'appartement connecté',
+                'slug' => 'velo-appartement-connecte',
+                'description' => 'Vélo indoor avec écran tactile et programmes',
+                'price' => 799.00,
+                'stock' => 8,
+                'image' => 'products/velo-appartement.jpg',
+                'active' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+
+            // LIVRES & MÉDIAS (category_id: 5)
+            [
+                'category_id' => 5,
+                'name' => 'Laravel: De Zéro à Héros',
+                'slug' => 'laravel-zero-hero',
+                'description' => 'Guide complet pour maîtriser Laravel 11',
+                'price' => 39.99,
+                'stock' => 120,
+                'image' => 'products/livre-laravel.jpg',
+                'active' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 5,
+                'name' => 'Clean Code - Robert C. Martin',
+                'slug' => 'clean-code-martin',
+                'description' => 'Le guide essentiel du développeur agile',
+                'price' => 44.99,
+                'stock' => 90,
+                'image' => 'products/clean-code.jpg',
+                'active' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 5,
+                'name' => 'Pack 3 BD Tech Humor',
+                'slug' => 'pack-bd-tech-humor',
+                'description' => 'Collection de BD humoristiques sur la tech',
+                'price' => 29.99,
+                'stock' => 55,
+                'image' => 'products/bd-tech.jpg',
+                'active' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ]);
+        */
+
+        $categories = Category::factory()->count(5)->create();
+
+        Product::factory()
+            ->count(30)
+            ->recycle($categories)
+            ->create();;
+    }
+}
