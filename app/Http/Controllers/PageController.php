@@ -23,6 +23,7 @@ class PageController extends Controller
 
     public function about(Request $request): View {
         $routeName  = $request->route()->getName();
+
         return view('about', compact('routeName'));
     }
 }
