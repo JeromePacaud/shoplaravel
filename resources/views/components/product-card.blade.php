@@ -1,10 +1,17 @@
 <div class="col-12 col-sm-6 col-md-4 col-lg-3 my-4">
     <div class="card h-100">
         @if($product->image)
-            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+            <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top" alt="{{ $product->name }}">
         @else
             <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHxzaG9lfGVufDB8MHx8fDE3MjEwNDEzNjd8MA&ixlib=rb-4.0.3&q=80&w=1080" class="card-img-top" alt="Product Image">
         @endif
+        <div class="p-3 d-flex justify-content-between">
+            @if(!$product->tags->isEmpty())
+                @foreach($product->tags as $tag)
+                    <span class="badge text-bg-primary mb-2 align-self-start">{{ $tag->name }}</span>
+                @endforeach
+            @endif
+        </div>
         <div class="card-body d-flex flex-column">
             <div class="d-flex justify-content-between align-items-start mb-2">
                 <h5 class="card-title mb-0">{{ $product->name }}</h5>
@@ -12,10 +19,15 @@
                     {{ $product->active ? 'Actif' : 'Inactif' }}
                 </span>
             </div>
-            @if($product->category)
-                <p class="small">Catégorie : <strong>{{ $product->category?->name }}</strong></p>
-            @endif
-            <span class="badge text-bg-primary mb-2 align-self-start">{{ $product->stockStatus }}</span>
+            <div class="d-flex justify-content-between">
+                @if($product->category)
+                    <a href="{{ route('categories.show', $product->category) }}"
+                       class="badge bg-primary text-decoration-none mb-2">
+                        {{ $product->category->name }}
+                    </a>
+                @endif
+                <span class="badge text-bg-primary mb-2">{{ $product->stockStatus }}</span>
+            </div>
             <p class="card-text flex-grow-1">{{ $product->description }}</p>
             <div class="d-flex justify-content-between align-items-center mt-auto">
                 <span class="h5 mb-0">{{ $product->formattedPrice }} €</span>

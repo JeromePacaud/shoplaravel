@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 /**
@@ -14,8 +16,29 @@ use Illuminate\Support\Str;
 class Product extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'slug',
+        'description',
+        'price',
+        'stock',
+        'category_id',
+        'image',
+        'active'
+    ];
+
+    protected $casts = [
+        'price' => 'decimal:2',
+        'active' => 'boolean',
+    ];
+
     public function category(): BelongsTo {
         return $this->belongsTo(Category::class);
+    }
+
+    public function tags(): BelongsToMany {
+        return $this->belongsToMany(Tag::class);
     }
 
     public function scopeActive(Builder $query): Builder{
@@ -74,20 +97,4 @@ class Product extends Model
             ],
         );
     }
-
-    protected $fillable = [
-        'name',
-        'slug',
-        'description',
-        'price',
-        'stock',
-        'category_id',
-        'image',
-        'active'
-    ];
-
-    protected $casts = [
-        'price' => 'decimal:2',
-        'active' => 'boolean',
-    ];
 }

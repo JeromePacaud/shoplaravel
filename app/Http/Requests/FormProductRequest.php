@@ -43,6 +43,7 @@ class FormProductRequest extends FormRequest
             'stock' => 'required|integer|min:0',
             'category_id' => 'nullable|exists:categories,id',
             'active' => 'nullable|boolean',
+            'tags' => ['array', 'nullable', 'exists:tags,id'],
         ];
     }
 
@@ -68,7 +69,7 @@ class FormProductRequest extends FormRequest
     {
         $this->merge([
             'slug' => $this->input('slug') ?? Str::slug($this->input('name')),
-            'active' => $this->has('active') ? true : false,
+            'active' => $this->has('active'),
         ]);
     }
 }

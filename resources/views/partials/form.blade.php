@@ -105,6 +105,20 @@
                     </select>
                 </div>
 
+                @foreach($tags as $tag)
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               name="tags[]"
+                               value="{{ $tag->id }}"
+                               id="tag-{{ $tag->id }}"
+                            @checked( old('tags', $tagsIds->contains($tag->id)) )>
+                        <label class="form-check-label" for="tag-{{ $tag->id }}">
+                            {{ $tag->name }}
+                        </label>
+                    </div>
+                @endforeach
+
                 <div class="form-check">
                     <input class="form-check-input"
                            type="checkbox"

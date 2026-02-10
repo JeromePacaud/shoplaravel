@@ -26,6 +26,13 @@
         <!-- Product Details -->
         <div class="col-12 col-lg-6">
             <h1 class="h2 h1-md mb-3">{{ $product->name }}</h1>
+            <div class="d-flex">
+                @if(!$product->tags->isEmpty())
+                    @foreach($product->tags as $tag)
+                        <span class="me-3 badge text-bg-primary mb-2 align-self-start">{{ $tag->name }}</span>
+                    @endforeach
+                @endif
+            </div>
             <div class="mb-3">
                 <span class="h3 h4-md me-2">{{ $product->formattedPrice }}</span>
                 <span class="badge text-bg-{{ $product->active ? 'success' : 'secondary' }}">
