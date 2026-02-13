@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\View\Composers\CartComposer;
+use Illuminate\Support\Facades;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\View\View;
 use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,5 +24,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useBootstrapFive();
+        Facades\View::composer('layouts.app', CartComposer::class);
     }
 }

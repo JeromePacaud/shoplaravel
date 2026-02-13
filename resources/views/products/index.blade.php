@@ -14,7 +14,12 @@
         @forelse($products as $product)
             <x-product-card :product="$product" />
         @empty
-            <p>Aucun produit trouvé.</p>
+            <div class="col-12">
+                <div class="alert alert-info text-center">
+                    <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+                    <p class="mb-0">Aucun produit trouvé.</p>
+                </div>
+            </div>
         @endforelse
 
     </div>

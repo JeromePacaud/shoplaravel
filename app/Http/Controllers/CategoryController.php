@@ -11,9 +11,15 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
+    public function index(Request $request): View {
+        $categories = Category::all();
+        $routeName = $request->route()->getName();
+        $context = [
+            'categories' => $categories,
+            'routeName' => $routeName
+        ];
+
+        return view('category.index', $context);
     }
 
     /**

@@ -43,27 +43,18 @@
         </div>
         <div class="card-footer bg-light">
             <div class="d-flex flex-wrap gap-2 mb-2">
-                <button class="btn btn-primary btn-sm flex-fill">
-                    <i class="bi bi-cart-plus"></i> Panier
-                </button>
+                <form action="{{ route('cart.add', $product) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-primary btn-sm flex-fill">
+                        <i class="bi bi-cart-plus"></i> Ajouter au panier
+                    </button>
+                </form>
                 <a href="{{ route('products.show', $product) }}" class="btn btn-info btn-sm flex-fill">
                     <i class="bi bi-eye"></i> Détails
                 </a>
                 <button class="btn btn-outline-secondary btn-sm">
                     <i class="bi bi-heart-fill text-danger"></i>
                 </button>
-            </div>
-            <div class="d-flex gap-2">
-                <a href="{{ route('products.edit', $product) }}" class="btn btn-warning btn-sm flex-fill">
-                    <i class="bi bi-pencil"></i> Éditer
-                </a>
-                <form action="{{ route('products.destroy', $product) }}" method="POST" class="flex-fill" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?');">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger btn-sm w-100">
-                        <i class="bi bi-trash"></i> Supprimer
-                    </button>
-                </form>
             </div>
         </div>
     </div>

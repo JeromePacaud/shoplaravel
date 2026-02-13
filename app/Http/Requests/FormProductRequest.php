@@ -38,12 +38,13 @@ class FormProductRequest extends FormRequest
                 'regex:/^[a-z0-9\-]+$/',
                 Rule::unique('products', 'slug')->ignore($productId)
             ],
-            'description' => 'required|string',
-            'price' => 'required|numeric|min:0',
-            'stock' => 'required|integer|min:0',
-            'category_id' => 'nullable|exists:categories,id',
-            'active' => 'nullable|boolean',
+            'description' => ['required', 'string'],
+            'price' => ['required', 'numeric', 'min:0'],
+            'stock' => ['required', 'integer', 'min:0'],
+            'category_id' => ['nullable', 'exists:categories,id'],
+            'active' => ['nullable', 'boolean'],
             'tags' => ['array', 'nullable', 'exists:tags,id'],
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:2048'], // 2MB max
         ];
     }
 
@@ -62,6 +63,10 @@ class FormProductRequest extends FormRequest
             'stock.integer' => 'Le stock doit être un nombre entier.',
             'stock.min' => 'Le stock ne peut pas être négatif.',
             'category_id.exists' => 'La catégorie sélectionnée n\'existe pas.',
+            'tags.exists' => 'Un des tags sélectionnés n\'existe pas.',
+            'image.image' => 'Le fichier doit être une image.',
+            'image.mimes' => 'L\'image doit être au format jpeg, png, jpg, gif ou webp.',
+            'image.max' => 'L\'image ne doit pas dépasser 2 Mo.',
         ];
     }
 

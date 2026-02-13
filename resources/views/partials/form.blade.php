@@ -58,6 +58,9 @@
                 <div class="mb-3">
                     <label for="image" class="form-label">Image du produit</label>
                     <input type="file" name="image" id="image" accept="image/*" class="form-control">
+                    @error('image')
+                        <p class="text-danger my-2">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="mb-3">
@@ -117,6 +120,9 @@
                             {{ $tag->name }}
                         </label>
                     </div>
+                    @error('tags')
+                        <p class="text-danger my-2">{{ $message }}</p>
+                    @enderror
                 @endforeach
 
                 <div class="form-check">

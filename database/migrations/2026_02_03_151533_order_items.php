@@ -16,7 +16,7 @@ return new class extends Migration
            $table->foreignId('order_id')->constrained('orders');
            $table->foreignId('product_id')->constrained('products');
            $table->integer('quantity');
-           $table->decimal('unit_price', 8, 2);
+           $table->decimal('unit_price', 8, 2)->default(0);
            $table->timestamps();
         });
     }
